@@ -81,3 +81,18 @@ Replications: repeating experiment with multiple subjects.
 p-value: probability results were observed by chance (p<0.05 - significant result)
 
 p-hacking: exhaustively search for correlations in data in large data sets.
+
+P console Input and Evaluation
+x <- 1 assignment operator (x is 1)
+print(x)
+# indicates comment
+
+```{r}
+x <- 1
+print(x)
+
+msg <- "hello"
+```
+
+
+
