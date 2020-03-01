@@ -1,0 +1,83 @@
+---
+title: "Class Notes"
+author: "Lancer Brown"
+date: "2/28/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Descriptive analysis
+
+**Goal** Describe or summarize a set of data
+
+1. Early analysis when receive new data
+2. Generate simple summaries about the samples and their measurements
+    + Eg: measures of central tendency or measures of variability
+3. NOT for generalizing the results of the analysis to a larger population or trying to make conclusions
+
+## Exploratory analysis
+
+**Goal** Examine the data and find relationships that weren't previously known
+
+1. Explore how different variables might be related
+2. Useful for discovering new connections
+3. Help to formulate hypotheses and drive the design of future studies and data collection
+
+**Correlation does not imply causation!**
+
+## Inferential analysis
+
+**Goal** Use a relatively small sample of data to say something about the population
+
+1. Provide your estimate of the variable for the population and provide your uncertainty about your estimate
+2. Ability to accurately infer information about the larger population depends heavily on sampling scheme
+
+## Predictive analysis
+
+**Goal** Use current and historical data to make predictions about future data
+
+1. Accuracy in predictions is dependent on measure the right variables
+2. Many ways to build up prediction models with some being better or worse for specific cases,
+    + More data and a simple model generally performs well at predicting future outcomes
+
+**Just because one variable may predict another, it does not mean that one causes the other**
+
+## Causal analysis
+
+**Goal** See what happens to one variable when we manipulate another variable
+
+1. Gold standard in data analysis
+2. Often applied to the results of randomized studies that were designed to identify causation
+3. Usually analysed in aggregate and observed relationships are usually average effects
+
+## Mechanistic analysis
+
+**Goal** Understand the exact changes in variables that lead to exact changes in other variables
+
+1. Applied to simple situations or those that are nicely modeled by deterministic equations
+2. Commonly applied to physical or engineering sciences
+    + Eg: Biological sciences, are far too noisy to use mechanistic analysis
+3. Often the only noise in the data is measurement error
+
+## Experimental design
+
+Formulate question -> Design -> ID problems and source error -> collect data
+
+Hypothesis: what is outcome of experiment
+
+Y-axis: Dependent variables
+X-axis: Independent variables
+
+Example: diet effect on BMI etc. (Diet = dependant)
+Confounder: extraneous that could effect relationship dependent vs independent
+
+Reduce confounding effects: controls, blinded, randomization
+
+Replications: repeating experiment with multiple subjects. 
+
+p-value: probability results were observed by chance (p<0.05 - significant result)
+
+p-hacking: exhaustively search for correlations in data in large data sets.
