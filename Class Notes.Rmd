@@ -85,14 +85,104 @@ p-hacking: exhaustively search for correlations in data in large data sets.
 P console Input and Evaluation
 x <- 1 assignment operator (x is 1)
 print(x)
+
 # indicates comment
+
+x <- ## nothing printed
+
+x ## auto-printing occurs
+
+print(x) ## explicit printing
 
 ```{r}
 x <- 1
 print(x)
 
 msg <- "hello"
+msg
+
+## : is used to create integer sequences
+x <- 1:20
+x
+
 ```
+
+
+## Data Types
+
+5 Basic (atomic) classes of objects
+- character
+- numeric
+- integers
+- complex
+- logical (True/False)
+
+Most basic object is vector
+vector can only contain objects of same class - Cannot Mix 
+ONe exception is list: which is a vector but can contain different classes
+
+Empty vectors can be created with vector()
+
+### Numbers
+
+- Numbers are numeric objetcs (double precision real numbers)
+
+- If you explicitly want an integer, you need to specify L suffix.
+
+- Ex. Entering 1 gives you a numeric, entering 1L gives you integer
+
+- There is also a special number Inf which represents infinity: e.g. 1 / 0: Inf can be used in ordinary calculations: e.g. 1 / Inf is 0
+
+- The NaN value represents undefined value "Not a Number" e.g. 0/0; NaN can also be thought of as a missing value (more on that later)
+
+### Attributes
+
+R objects can have attributes
+
+- names, dimnames
+
+- dimensions (e.g. matrices, arrays)
+
+- class
+
+- length
+
+- other user-defined attributes/metadata
+
+Attributes of an object can be accessed using the attributes() function.
+
+## R Data Types - Vectors and Lists
+
+The c() function can be used to create vectors of objects
+
+```{r}
+x <- c(0.5, 0.6) ## numeric
+x <- c(TRUE, FALSE) ## logical
+x <- c(T, F) ## logical
+x <- c("a", "b", "c") ## character
+x <- 9:29 ## integer
+x <- c(1+0i, 2+4i) ## complex
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
