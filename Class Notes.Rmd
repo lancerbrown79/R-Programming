@@ -393,6 +393,19 @@ Data types
 
 - names
 
+## dput-ting / dget-ting R Objects
+
+Pass data around by deparsing R object with dput and reading it back in using dget.
+
+```{r}
+y <- data.frame(a = 1, b = "a")
+dput(y)
+dput(y, file = "y.R")
+new.y <- dget("y.R")
+new.y
+```
+
+
 
 
 
