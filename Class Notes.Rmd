@@ -406,13 +406,25 @@ new.y
 ```
 
 
+## Removing NA Values
+
+```{r}
+x <- c(1, 2, NA, 4, NA, 5)
+bad <- is.na(x)
+bad
+x[!bad]
+
+```
+
+# Matrix Multiplication (true matrix multiplication a %*% b)
+
+1, 3  x 10, 10    = 40, 40  (1x10 + 3x10), (1x10 + 3x10)
+2, 4    10, 10      60, 60  (2x10 + 4x10), (2x10 + 4x10)
+
+colMeans(w1ds, na.rm = TRUE, dims = 1)
 
 
-
-
-
-
-
+summarise(y, mean(Solar.R))
 
 
 
