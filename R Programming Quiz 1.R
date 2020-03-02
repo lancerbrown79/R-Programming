@@ -59,3 +59,17 @@ w1ds[47,]
 
 sum(is.na(w1ds$Ozone))
 colMeans(w1ds, na.rm = TRUE, dims = 1)
+
+
+head(w1ds)
+tail(w1ds)
+good <- complete.cases(w1ds)
+good
+which(!complete.cases(w1ds))
+na_vec <- which(!complete.cases(w1ds))
+na_vec
+w1ds_no_NA <- w1ds[-na_vec,]
+w1ds_no_NA
+w1ds_NAomit <- na.omit(w1ds)
+w1ds_NAomit
+mean(w1ds_NAomit$Ozone)
