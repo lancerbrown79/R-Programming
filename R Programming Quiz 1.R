@@ -95,3 +95,9 @@ cbind(x,y)
 x <- list(2, "a", "b", TRUE)
 x[[2]]
 class(x[[2]])
+
+sub <- subset(w1ds, Ozone>31)
+sub
+?subset
+sub2 <- subset(w1ds, Temp>90)
+sub2
