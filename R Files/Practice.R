@@ -55,4 +55,50 @@ plot(test$SSCID,test$R1)
 
 quit(save = "default", status = 0, runLast = TRUE)
 
+# List [[ returns element, [ returns sublist constaining specified elements
+x <- list(song=1, c("a","b"), TRUE, 1 + 4i)
+x
+x[[2]]
+x[2]
+x[c(2,3)]
+x[[c(2,1)]]
+
+# $ can select element from List if names are used
+x$song
+
+# add element to a list
+friends <- c("jon", "rachel")
+x$sent <- friends
+x
+# OR
+x[[sent]] <- friends
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
