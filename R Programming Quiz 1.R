@@ -40,7 +40,8 @@ z <- w1ds %>%
   select(Ozone, Month) %>%
   filter(Month == 5)
 z
-max(z)
+max(z, z$Ozone, na.rm = TRUE)
+
 x <- 4L
 class()
 class(x)
