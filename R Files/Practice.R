@@ -182,7 +182,7 @@ for(i in 1:1000) {
 # Return signals that a function should exit and return to a given value
 
 
-
+q()
 
 
 
