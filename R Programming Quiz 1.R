@@ -5,7 +5,7 @@ x <- c(4, "a", TRUE)
 class(x)
 x <- c(1,3,5)
 y <- c(3,2,10)
-rbind(x,y)
+cbind(x,y)
 x <- list(2, "a", "b", TRUE)
 x[[1]]
 x <- 1:4
@@ -24,7 +24,7 @@ good
 
 colMeans(w1ds, na.rm = TRUE, dims = 1)
 w1ds
-
+install.packages("tidyverse")
 library(tidyverse)
 y <- filter(w1ds, Ozone>31, Temp>90, Solar.R)
 y
@@ -81,7 +81,8 @@ w1ds[[1]]
 w1ds[c(1,3), "Ozone"]
 
 x <- list(2, "a", "b", TRUE)
-y <- x[[1]]
+x[[2]]
+y <- x[[2]]
 class(y)
 
 x <- c(17, 14, 4, 5, 13, 12, 10) 
@@ -101,3 +102,25 @@ sub
 ?subset
 sub2 <- subset(w1ds, Temp>90)
 sub2
+
+x <- 1:4
+y <- 2
+x+y
+w1ds[47, ]
+sum(is.na(w1ds$Ozone))
+mean(w1ds$Ozone, na.rm = TRUE, dims = 1)
+
+x <- c(3, 5, 1, 10, 12, 6)
+x[x < 6] == 0
+x[x %in% 1:5] < 0
+x[x != 6] <- 0
+
+x[x>6] <- 0
+x[x==6] <- 0
+x
+x[x<6] == 0
+x[x<6] <- 0
+x[x==0] <- 6
+x
+
+x
