@@ -35,13 +35,14 @@ columnmean <- function(y, removeNA = TRUE) {
 
 columnmean(airquality)
 
+## Broken down
 columnmean(airquality, FALSE)
-
-
-
-
-
-
-
+nc <- ncol(airquality)
+means <- numeric(nc)
+means
+for(i in 1:nc) {
+  means[i] <- mean(airquality[, i], na.rm = TRUE)
+}
+means
 
 
