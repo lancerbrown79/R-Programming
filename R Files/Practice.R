@@ -181,9 +181,12 @@ for(i in 1:1000) {
 
 # Return signals that a function should exit and return to a given value
 
-
-q()
-
+# Get working directory
+getwd()
+# List files
+list.files("/Users/lancer/Documents/R Programming/R-Programming/testdir")
+# Remove directory
+unlink("/Users/lancer/Documents/R Programming/R-Programming/testdir", recursive = TRUE)
 
 
 

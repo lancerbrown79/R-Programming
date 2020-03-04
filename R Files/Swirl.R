@@ -181,4 +181,50 @@ lancerbrown79@gmail.com
 xDrVttj8tQavx0kK
 
 bye()
-0
+8
+TRUE == TRUE
+(FALSE == TRUE) == FALSE
+6 == 7
+6 < 7  
+10 <= 10  
+2  
+3  
+5 != 7  
+5 !== 7
+! 5 == 7  
+2  
+4  
+FALSE & FALSE  
+TRUE & c(TRUE, FALSE, FALSE)
+TRUE && c(TRUE, FALSE, FALSE)
+TRUE | c(TRUE, FALSE, FALSE)
+TRUE || c(TRUE, FALSE, FALSE)
+5 > 8 || 6 != 8 && 4 > 3.9
+3
+4
+2
+isTRUE(6>4)
+2
+identical('twins', 'twins')
+4
+xor(5 == 6, !FALSE)
+2
+4
+ints <- sample(10)
+ints
+ints > 5
+which(ints > 7)
+any(ints < 0)
+all (ints > 0)
+2
+2
+lancerbrown79@gmail.com
+FVV2HtOit6dhB4a3
+1
+
+2
+swirl()
+Lancer
+1
+
+bye
