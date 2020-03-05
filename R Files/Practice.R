@@ -340,4 +340,3 @@ mean(prac_NAomit$number)
 
 
 
-
