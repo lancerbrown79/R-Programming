@@ -305,7 +305,7 @@ f <- function(x, y) {
 ## The values of free variables are searched for in the environment for which the function was defined.
 ## A function + an environment = a closure or function closure
 
-
+quit()
 
 
 
