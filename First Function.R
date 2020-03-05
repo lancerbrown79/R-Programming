@@ -38,6 +38,7 @@ columnmean(airquality)
 ## Broken down
 columnmean(airquality, FALSE)
 nc <- ncol(airquality)
+numeric(nc)
 means <- numeric(nc)
 means
 for(i in 1:nc) {
@@ -45,4 +46,5 @@ for(i in 1:nc) {
 }
 means
 
+ncol(airquality)
 
