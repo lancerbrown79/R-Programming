@@ -307,6 +307,32 @@ f <- function(x, y) {
 
 quit()
 
+getwd()
+
+str(w1ds)
+library(tidyverse)
+
+## Making data frame
+names <- c("Lancer", "Kelly", "Bill")
+number <- c(32, NA, 43)
+day <- c(26, 15, 10)
+prac <- data.frame(names, number, day)
+good <- complete.cases(prac)
+good
+which(complete.cases(prac))
+na_vec <- which(complete.cases(prac$number))
+na_vec
+pracnoNA <- prac[na_vec,]
+pracnoNA
+## Or remove NAs by
+prac_NAomit <- na.omit(prac)
+prac_NAomit
+mean(prac_NAomit$number)
+
+
+
+
+
 
 
 
