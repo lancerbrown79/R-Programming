@@ -49,7 +49,7 @@ ggplot(test, aes(x = SSCID, y = R1)) +
   geom_point() +
   geom_point(aes(x = SSCID, y = R2)) +
   geom_point(aes(x = SSCID, y = R3))
-  
+
 plot(test$SSCID)
 plot(test$SSCID,test$R1)
 
@@ -149,8 +149,8 @@ while(z >= 3 && z <= 10) {
   if(coin == 1) { ##random walk
     z <- z + 1
   } else {
-      z <- z - 1
-    }
+    z <- z - 1
+  }
 }
 
 ?rbinom
@@ -216,11 +216,11 @@ sd(na.rm = FALSE, mydata)
 
 args(lm)
 function(formula, data, subset, weights, na.action, method = "qr", model = TRUE, x = FALSE, 
-         y = FALSE, qr = TRUE, singular.ok = TRUE, contrasts = NULL, offset, ...)
-
-## The following two calls are equivalent
-
-lm(data = mydata, y ~ x, model = FALSE, 1:100)
+  y = FALSE, qr = TRUE, singular.ok = TRUE, contrasts = NULL, offset, ...)
+  
+  ## The following two calls are equivalent
+  
+  lm(data = mydata, y ~ x, model = FALSE, 1:100)
 lm(y ~ x, mydata, 1:100, model = FALSE)
 
 ## in addition to not specifying a default value, you can also set an argument value to NULL
@@ -259,22 +259,22 @@ myplot <- function(x, y, type = "l", ...) {
 
 mean
 function(x, ...)
-UseMethod("mean")
+  UseMethod("mean")
 
 ## The ... argument is necessary when the number of arguments passed to the function cannot be known in advance.
 
 args(paste)
 function(..., sep = " ", collapse = NULL)
-
-args(cat)
-function(..., file = "", sep = " ", fill = FALSE,
-         labels = NULL, append = FALSE)
-
-## One catch with ... is any arguments that appear after ... on argument list must be explicitly named.
   
-args(paste)
+  args(cat)
+function(..., file = "", sep = " ", fill = FALSE,
+  labels = NULL, append = FALSE)
+  
+  ## One catch with ... is any arguments that appear after ... on argument list must be explicitly named.
+  
+  args(paste)
 function(..., sep = " ", collapse = NULL)
-paste("a", "b", sep = ":")
+  paste("a", "b", sep = ":")
 paste("a", "b", se = ":")
 
 
@@ -335,99 +335,93 @@ boring_function <- function(x) {
 }
 
 my_mean <- function(my_vector) {
-  sumvec <- sum(my_vector)
-  lengthvec <- length(my_vector)
-  mean <- sumvec / lengthvec
-  mean
-  
+sumvec <- sum(my_vector)
+lengthvec <- length(my_vector)
+mean <- sumvec / lengthvec
+mean
 evaluate <- function(func, dat){
   eval <- func(dat)
-  eval
+    eval
 }
-
+  
 submit()
 evaluate(sd, c(1.4, 3.6, 7.9, 8.8))
 evaluate(function(x){x+1}, 6)
 evaluate(function(x){x[2]}, c(8, 4, 0))
-
-
+  
+  
 remainder <- function(num, divisor = 2) {
   rem <- num %% divisor
   rem
-}
-
+  }
+  
 submit()
 remainder(5)
 remainder(11, 5)
 remainder(divisor = 11, num = 5)
 remainder(4, div = 2)
 args(remainder)
-
-mad_libs <- function(...){
- args <- list(...)
- place <- args[["place"]]
- adjective <- args[["adjective"]]
- noun <- args[["noun"]]
-  paste("News from", place, "today where", adjective, "students took to the streets in protest of the new", noun, "being installed on campus.")
-}
-
-
-"%p%" <- function(left, right){ 
-  paste(left, right, sep = " ")
-
-## Lexical scoping
   
+mad_libs <- function(...){
+  args <- list(...)
+  place <- args[["place"]]
+  adjective <- args[["adjective"]]
+  noun <- args[["noun"]]
+  paste("News from", place, "today where", adjective, "students took to the streets in protest of the new", noun, "being installed on campus.")
+  }
+  
+  
+"%p%" <- function(left, right){
+  paste(left, right, sep = " ")
+    
+## Lexical scoping
+    
 make.power <- function(n) {
   pow <- function(x) {
     x^n
-  }
+    }
   pow
-}
-
+  }
+    
 cube <- make.power(3)
 square <- make.power(2)
 cube(3)
 square(3)
-
+    
 ls(environment(cube))
 get("n", environment(cube))
 ls(environment(square))
 get("n", environment(square))
-
+    
 ## Lexical scoping vs Dynamic scoping
 y <- 10
-
+    
 f <- function(x) {
   y <- 2
   y^2 + g(x)
-}
-
+  }
+    
 g <- function(x) {
   x*y
-}
+  }
 
 f(3)
-
+    
 ## Dynamic scoping would call y value as 2, Lexical scoping looks up y in the
 ## environment in which the function was defined, so y = 10
 ## In dynamic scoping, the value of y is looked up in environment from whic the function was
 ## called (sometimes referred to as the calling environment), so y would be 2.
 ## - In R the calling environment = parent frame
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
