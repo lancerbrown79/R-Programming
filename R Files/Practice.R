@@ -88,6 +88,7 @@ y <- if(x > 3) {
 } else {
   0
 }
+y
 
 ## Else clause is not necessary
 if(<condition1>) {
@@ -328,6 +329,96 @@ pracnoNA
 prac_NAomit <- na.omit(prac)
 prac_NAomit
 mean(prac_NAomit$number)
+
+boring_function <- function(x) {
+  x
+}
+
+my_mean <- function(my_vector) {
+  sumvec <- sum(my_vector)
+  lengthvec <- length(my_vector)
+  mean <- sumvec / lengthvec
+  mean
+  
+evaluate <- function(func, dat){
+  eval <- func(dat)
+  eval
+}
+
+submit()
+evaluate(sd, c(1.4, 3.6, 7.9, 8.8))
+evaluate(function(x){x+1}, 6)
+evaluate(function(x){x[2]}, c(8, 4, 0))
+
+
+remainder <- function(num, divisor = 2) {
+  rem <- num %% divisor
+  rem
+}
+
+submit()
+remainder(5)
+remainder(11, 5)
+remainder(divisor = 11, num = 5)
+remainder(4, div = 2)
+args(remainder)
+
+mad_libs <- function(...){
+ args <- list(...)
+ place <- args[["place"]]
+ adjective <- args[["adjective"]]
+ noun <- args[["noun"]]
+  paste("News from", place, "today where", adjective, "students took to the streets in protest of the new", noun, "being installed on campus.")
+}
+
+
+"%p%" <- function(left, right){ 
+  paste(left, right, sep = " ")
+
+## Lexical scoping
+  
+make.power <- function(n) {
+  pow <- function(x) {
+    x^n
+  }
+  pow
+}
+
+cube <- make.power(3)
+square <- make.power(2)
+cube(3)
+square(3)
+
+ls(environment(cube))
+get("n", environment(cube))
+ls(environment(square))
+get("n", environment(square))
+
+## Lexical scoping vs Dynamic scoping
+y <- 10
+
+f <- function(x) {
+  y <- 2
+  y^2 + g(x)
+}
+
+g <- function(x) {
+  x*y
+}
+
+f(3)
+
+## Dynamic scoping would call y value as 2, Lexical scoping looks up y in the
+## environment in which the function was defined, so y = 10
+## In dynamic scoping, the value of y is looked up in environment from whic the function was
+## called (sometimes referred to as the calling environment), so y would be 2.
+## - In R the calling environment = parent frame
+
+
+
+
+
+
 
 
 
