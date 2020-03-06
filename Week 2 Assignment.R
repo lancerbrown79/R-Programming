@@ -55,16 +55,72 @@ complete <- function(directory, id = 1:332) {
   print(cctable)
 }
 
-complete("/Users/lancer/Documents/R Programming/CourseEra/specdata/", 1:2)
 
+source("complete.R")
+source("pollutantmean.R")
+complete("specdata", 1)
+complete("specdata")
+pollutantmean("specdata", "sulfate", 1:10)
+pollutantmean("specdata", "nitrate", 70:72)
+pollutantmean("specdata", "sulfate", 34)
+pollutantmean("specdata", "nitrate")
+cc <- complete("specdata", c(6, 10, 20, 34, 100, 200, 310))
+print(cc$nobs)
+cc <- complete("specdata", 54)
+print(cc$nobs)
+RNGversion("3.5.1")  
+set.seed(42)
+cc <- complete("specdata", 332:1)
+use <- sample(332, 10)
+print(cc[use, "nobs"])
+cr <- corr("specdata")                
+cr <- sort(cr)   
+RNGversion("3.5.1")
+set.seed(868)                
+out <- round(cr[sample(length(cr), 5)], 4)
+print(out)
 
+cr <- corr("specdata", 2000)                
+n <- length(cr)                
+cr <- corr("specdata", 1000)                
+cr <- sort(cr)
+print(c(n, round(cr, 4)))
 
+x <- read.csv("001.csv")
+x
+ccx <- complete.cases(x)
+cc1 <- x[ccx, ]
+nrow(cc1)
+print(cor(cc1$nitrate, cc1$sulfate))
 
+corr <- function(directory, threshold = 0) {
+  filelist <- list.files("/Users/lancer/Documents/R Programming/CourseEra/specdata/", pattern = "*.csv", full.names=TRUE)
+  dat_csv <- ldply(filelist, read_csv)
+  dat_csvcc <- complete.cases(dat_csv)
+  cc1 <- dat_csv[dat_csvcc, ]
+  z <- data.frame()
+  for (i in 1:332) {
+    rowcount <- nrow(filter(cc1, ID==i))
+      if(rowcount < threshold) {
+        print(as.numeric(c(0)))
+      } else {
+        thresh <- rbind(z, filter(cc1, ID==i))
+        print(cor(thresh$nitrate, thresh$sulfate))
+      }
+  }
+  
+  }
 
+corr("specdata", 20000)
 
+x
+options(max.print = 5000000)
+cc1
+library(tidyverse)
+dat_csv <- ldply(filelist, read_csv)
+dat_csv
+library(plyr)
+library(readr)
 
-
-
-
-
+library(dplyr)
 
