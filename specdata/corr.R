@@ -31,7 +31,7 @@ corr <- function(directory, threshold=0) {
   # Correlation between sulfate and nitrate for the selected cases
   for (i in selected_cases) {      
     id_fs<-formatC(i,width=3, flag="0")   
-    tmp<-read.csv(paste(directory,"/",as.character(id_fs),".csv", sep=''))
+    tmp<-read.csv(paste("/Users/lancer/Documents/R Programming/CourseEra/specdata","/",as.character(id_fs),".csv", sep=""))
     tmp <- tmp[complete.cases(tmp),]
     cor<-cor(tmp$sulfate,tmp$nitrate)
     c<-c(c,cor)  
@@ -42,3 +42,8 @@ corr <- function(directory, threshold=0) {
 }
 
 corr("specdata", 3)
+getwd()
+setwd()
+id_fs<-formatC(1,width=3, flag="0")  
+id_fs
+tmp<-read.csv(paste("/Users/lancer/Documents/R Programming/CourseEra/specdata","/",as.character(id_fs),".csv", sep=""))
