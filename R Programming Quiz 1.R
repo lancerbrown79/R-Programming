@@ -124,3 +124,4 @@ x[x==0] <- 6
 x
 
 x
+detach("package:datasets", unload = TRUE)
