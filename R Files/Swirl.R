@@ -181,4 +181,76 @@ lancerbrown79@gmail.com
 xDrVttj8tQavx0kK
 
 bye()
+8
+TRUE == TRUE
+(FALSE == TRUE) == FALSE
+6 == 7
+6 < 7  
+10 <= 10  
+2  
+3  
+5 != 7  
+5 !== 7
+! 5 == 7  
+2  
+4  
+FALSE & FALSE  
+TRUE & c(TRUE, FALSE, FALSE)
+TRUE && c(TRUE, FALSE, FALSE)
+TRUE | c(TRUE, FALSE, FALSE)
+TRUE || c(TRUE, FALSE, FALSE)
+5 > 8 || 6 != 8 && 4 > 3.9
+3
+4
+2
+isTRUE(6>4)
+2
+identical('twins', 'twins')
+4
+xor(5 == 6, !FALSE)
+2
+4
+ints <- sample(10)
+ints
+ints > 5
+which(ints > 7)
+any(ints < 0)
+all (ints > 0)
+2
+2
+lancerbrown79@gmail.com
+FVV2HtOit6dhB4a3
+9
+Sys.date() ## Today's date
+
+d1 <- Sys.Date()
+class(d1)
+unclass(d1)
+d1
+d2 <- as.Date("1969-01-01")
+unclass(d2)
+t1 <- Sys.time()
+t1
+class(t1)
+unclass(t1)
+t2 <- as.POSIXlt(Sys.time())
+class(t2)
+t2
+unclass(t2)
+str(unclass(t2))
+t2$min
+weekdays(d1)
+months(t1)
+quarters(t2)
+t3 <- "October 17, 1986 08:24"
+t4 <- strptime(t3, "%B %d, %Y %H:%M")
+t4
+class(t4)
+Sys.time() > t1
+Sys.time() - t1
+difftime(Sys.time(), t1, units = 'days')
+1
+lancerbrown79@gmail.com
+tqsva1yyTULTD9EX
+bye()
 0
