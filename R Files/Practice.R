@@ -413,15 +413,221 @@ f(3)
 ## called (sometimes referred to as the calling environment), so y would be 2.
 ## - In R the calling environment = parent frame
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
+## lapply: loop over a list and evaluate a function on each element
+## sapply: Same as lapply but try to simplify the result
+## apply: Apply a function over the margins of an array
+## tapply: Apply a function over subsets of a vector
+## mapply: Multivariate version of lapply
+
+## An auxiliary function split is also useful, particularly in conjunction with lapply
+
+## lapply takes 3 arguments 1. a list x; 2. a function (or name of a function) FUN; 3. other arguments 
+## via its ... argument. If x is not a list, it will be coerced to a list using as.list.
+
+function (X, FUN, ...) {
+  FUN <- match.fun(FUN)
+  if(!is.vector(X) || is.object(X))
+    X <- as.list(X)
+  .Internal(lapply(X, FUN))
+}
+<bytecode: 0x7ff7a1951c00>
+<environment: namsepace:base>
+
+## lapply always returns a list, regardless of input class
+x <- list(a = 1.5, b = rnorm(10))
+lapply(x, mean)
+
+x <- list(a = 1:4, b = rnorm(10), c = rnorm(20, 1), d = rnorm(100, 5))
+lapply(x, mean)    
+x <- 1:4
+lapply(x, runif)
+x <- 1:4
+lapply(x, runif, min = 0, max = 10)
+
+## lapply and friends make heavy use of anonymous functions
+x <- list(a = matrix(1:4, 2, 2), b = matrix(1:6, 3, 2))
+x    
+## anonymous function for extrating first column in each matrix (function doesn't have a name)
+lapply(x, function(elt) elt[, 1])
+
+## sapply will try to simplify result of lapply
+## If the result is a list where every element is length 1, then a vector is returned
+## If the result is a list where every element is a vector of the same length (>1) matrix is returned.
+## If it can't figure things out, a list is returned.
+x <- list(a = 1:4, b = rnorm(10), c = rnorm(20, 1), d = rnorm(100, 5))
+sapply(x, mean)
+
+## apply is used to evaluate a function (often anonymous) over the margins of an array
+## It is most often used to apply a function to the rows or columns of matrix.
+## It can be used with general arrays, e.g. taking the average of an array of matrices.
+## It is not really faster than writing a loop, but it works in one line.
+
+str(apply)
+## function (X, MARGIN, FUN, ...)  X is an array, MARGIN is integer vector indicating which margins should be
+## retained, FUN is a function to be applied, ... is for other arguments to be passed to FUN.
+
+x <- matrix(rnorm(200), 20, 10)
+apply(x, 2, mean) ## take mean of each column, retain columns.
+
+apply(x, 1, sum) ## take sum of each row, retain rows.
+
+For sums and means of matrix dimensions, we have shortcuts:
+
+rowSums = apply(x, 1, sum)
+rowMeans = apply(x, 1, mean)
+colSums = apply(x, 2, sum)
+colMeans = apply(x, 2, mean)
+
+x <- matrix(rnorm(200), 20, 10)
+apply(x, 1, quantile, probs = c(0.25, 0.75))
+
+## Average matrix in an array
+a <- array(rnorm(2 * 2 * 10), c(2, 2, 10))
+apply(a, c(1, 2), mean)
+rowMeans(a, dims = 2)
+
+## mapply is multivariate apply of sorts which applies function in parallel
+## over a set of arguments.
+
+str(mapply)
+## function (FUN, ..., MoreArgs = NULL, SIMPLIFY = TRUE, USE.NAMES = TRUE)
+## FUN is a function to apply, ... contains arguments to apply over, MoreArgs is a 
+## list of other arguments to FUN. SIMPLIFY indicates whether result should be simplified.
+list(rep(1, 4), rep(2, 3), rep(3, 2), rep(4, 1))
+instead we can:
+
+mapply(rep, 1:4, 4:1)
+noise <- function(n, mean, sd) {
+  rnorm(n, mean, sd)
+}
+noise(5, 1, 2)
+noise(1:5, 1:5, 2)
+mapply(noise, 1:5, 1:5, 2)
+## ^^ is same as
+list(noise(1, 1, 2), noise(2, 2, 2), noise(3, 3, 2), noise(4, 4, 2), noise(5, 5, 2))
+
+## tapply is used to apply a function over subsets of a vector.
+str(tapply)
+## function (X, INDEX, FUN = NULL, ..., default = NA, simplify = TRUE)
+## X is a vector, INDEX is a factor or list of factors, FUN is function to be applied, 
+## ... contains other arguments to be passed FUN, simplify - should we simplify result?
+
+x <- c(rnorm(10), runif(10), rnorm(10, 1))
+f <- gl(3, 10)
+f
+tapply(x, f, mean)
+tapply(x, f, range)
+
+## split takes a vector or other objects and splits it into groups determined by a factor
+## or a list of factors. Always returns a list back.
+str(split)
+## function (x, f, drop = FALSE, ...) 
+## x is a vector (or list) or data frame, f is a factor (or coerced to one) or a list
+## of factors, drop indicates whether empty factors levels should be dropped.
+
+x <- c(rnorm(10), runif(10), rnorm(10, 1))
+f <- gl(3, 10)
+split(x, f)
+lapply(split(x, f), mean) ## or use tapply function which will do exact same thing.
+
+library(datasets)
+head(airquality)
+
+s <- split(airquality, airquality$Month)
+lapply(s, function(x) colMeans(x[, c("Ozone", "Solar.R", "Wind")]))
+
+sapply(s, function(x) colMeans(x[, c("Ozone", "Solar.R", "Wind")]))
+
+sapply(s, function(x) colMeans(x[, c("Ozone", "Solar.R", "Wind")], na.rm = TRUE))
+
+## Splitting on more than one level
+
+x <- rnorm(10)
+f1 <- gl(2, 5)
+f2 <- gl(5, 2)
+?gl
+f1
+f2
+interaction(f1,f2)
+str(split(x, list(f1, f2))) ##list(f1, f2) automatically calls interaction
+str(split(x, list(f1, f2), drop = TRUE)) #drop removes empty levels created by splitting.
+
+## Debugging
+
+## message: generic notification produced by message function; execution of function continues.
+## warning: An indication something is wrong but is not fatal; execution of function continues; 
+## error: An indication that a fatal problem has occurred; execution stops; produced by the stop function
+## condition: A generic concept for indication something unexpected can occcur; programmers
+## can create their own conditions.
+
+## Warning
+log(-1)
+
+printmessage <- function(x) {
+  if(x>0)
+    print("x is greater than zero")
+  else
+    print("x is less than or equal to zero")
+  invisible(x)
+}
+
+printmessage(1)
+printmessage(NA)
+
+printmessage2 <- function(x) {
+  if(is.na(x))
+    print("x is a missing value")
+  else if (x>0)
+    print("x is greater than zero")
+  else
+    print("x is less than or equal to zero")
+  invisible(x)
+}
+
+x <- log(-1)
+
+printmessage2(x)
+
+## Debugging questions
+## What was your input? How did you call the function?
+## What were you expecting?
+## What did you get?
+## How does what you get differ from what you were expecting?
+## Were your expectations correct in the first place?
+## Can you reproduce the problem (exactly)?
+
+## Debugging tools in R
+## traceback: prints out the function call stack after an error occurs; does nothing if there's no error
+## debug: flags a function for "debug" mode which allows you to step through execution of a function one
+## line at a time.
+## browser: suspends the execution of a function wherever it is called and puts the function
+## in debug mode.
+## trace: allows you to insert debugging code into a function at specific places.
+## recover: allows you to modify the error behavior so that you can browse the function call stack.
+
+mean(x)
+traceback()
+lm(y ~ x)
+n
+traceback()
+debug(lm)
+
+# Recover
+
+options(error = recover)
+read.csv("nosuchfile")
+1
+
+## Summary
+## There are three main indications of problem/condition: message, warning, error
+## only error is fatal
+## Interactive debuggin tools traceback, debug, browser, trace, and recover can be used
+## to find problematic code in functions
+## Debugging tools are not a substitute for thinking!
+
+
+
+
     
     
     
