@@ -614,7 +614,7 @@ debug(lm)
 
 # Recover
 
-options(error = recover)
+options(error = NULL)
 read.csv("nosuchfile")
 1
 
