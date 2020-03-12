@@ -25,3 +25,14 @@ cachemean <- function(x, ...) {
   m
 }
 
+getwd()
+
+fv <- makeVector()
+
+fv$set(1:5)
+
+fv$get() #I will see a vector of 1-5 once I press [ENTER]
+
+cachemean(fv) #first time
+
+cachemean(fv) #second time
